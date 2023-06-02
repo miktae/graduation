@@ -1,17 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using AForge.Video;
 using AForge.Video.DirectShow;
 using S7.Net;
-using Python.Runtime;
 
 
 namespace Conn_PLC
@@ -29,10 +23,9 @@ namespace Conn_PLC
         // Khai báo Class
         ReadFromPLC data_plc = new ReadFromPLC();
 
-
         public Form1()
         {
-            InitializeComponent();
+            InitializeComponent();   
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -170,6 +163,7 @@ namespace Conn_PLC
 
         private void btnExit_Click(object sender, EventArgs e)
         {
+
             if (MessageBox.Show("Do you sure you want to exit?", "Notification", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
             {
                 Application.Exit();
@@ -205,6 +199,7 @@ namespace Conn_PLC
 
 
         // HÀM CHỤP ẢNH VÀ LƯU ẢNH
+        // img 
         private void Capture_Save()
         {
             if(data_plc.Capture == true)
@@ -248,6 +243,8 @@ namespace Conn_PLC
                     {
                         writer.Write(text);
                     }
+
+                    
                 }
                 else
                 {
@@ -264,6 +261,46 @@ namespace Conn_PLC
         private void label4_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void ptbVideo_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            // Định nghĩa đường dẫn đến file Python
+            string pythonScriptPath = @"../../../PythonApplication/PythonApplication.py";
+
+            // Tạo một ProcessStartInfo mới
+            ProcessStartInfo startInfo = new ProcessStartInfo("python");
+            startInfo.Arguments = pythonScriptPath;
+            startInfo.UseShellExecute = false;
+            startInfo.RedirectStandardInput = true;
+            startInfo.RedirectStandardOutput = true;
+
+            // Khởi chạy tiến trình Python
+            Process process = new Process();
+            process.StartInfo = startInfo;
+            process.Start();
+
+            // Định nghĩa một chuỗi trong C#
+            string myString = "E:/nckh_2023/nckh_2023/repo/Conn_PLC/Resources/ok.jpg";
+
+            // Gửi chuỗi đến file Python
+            process.StandardInput.WriteLine(myString);
+            process.StandardInput.Flush();
+
+            // Đọc kết quả trả về từ file Python
+            string result = process.StandardOutput.ReadLine();
+
+            // Hiển thị kết quả lên Label
+            label10.Text = result;
+
+            // Đóng tiến trình Python
+            process.StandardInput.Close();
+            process.WaitForExit();
         }
     }
 }

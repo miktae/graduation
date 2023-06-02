@@ -6,6 +6,7 @@ import numpy as np
 import imutils
 import math
 import cv2
+import sys
 
 # mm per pixel
 irate = 0.0208
@@ -140,10 +141,12 @@ def detect(imgPath):
 
 		if(radius * irate >= 23.7 and radius * irate <= 24.3):
 			print(imgPath + " OK")
+			return 1
 			with open(file_path, 'w') as file:
 				file.write(imgPath + " OK" + '\n')
 		else:
 			print(imgPath + " NG")
+			return 0
 			with open(file_path, 'w') as file:
 				file.write(imgPath + " NG" + '\n')
 
@@ -230,3 +233,15 @@ def detect(imgPath):
 		cv2.circle(orig, (int(trbrX), int(trbrY)), 5, (255, 0, 0), -1)
 		cv2.imshow(cv2.resize(orig, dim, interpolation = cv2.INTER_AREA))
 		cv2.waitKey(0)
+
+for line in sys.stdin:
+    # Đọc dữ liệu từ STDIN
+    myString = line.strip()
+
+    # Xử lý dữ liệu
+    result = detect(myString)
+
+    # Gửi kết quả trả về cho file C#
+    print(result)
+    sys.stdout.flush()
+

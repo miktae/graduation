@@ -76,6 +76,8 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.button3 = new System.Windows.Forms.Button();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.stdStatusConn)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -251,26 +253,28 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label10);
+            this.groupBox1.Controls.Add(this.button3);
             this.groupBox1.Controls.Add(this.ptbVideo);
             this.groupBox1.Controls.Add(this.cbCamera);
             this.groupBox1.Controls.Add(this.btnOnCam);
             this.groupBox1.Controls.Add(this.btnOffCam);
             this.groupBox1.Location = new System.Drawing.Point(398, 147);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(515, 604);
+            this.groupBox1.Size = new System.Drawing.Size(515, 709);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "DISPLAY CAMERA 1";
             // 
             // ptbVideo
             // 
-            this.ptbVideo.Image = global::Conn_PLC.Properties.Resources.Pic_2023_05_12_185518_3;
             this.ptbVideo.Location = new System.Drawing.Point(6, 19);
             this.ptbVideo.Name = "ptbVideo";
             this.ptbVideo.Size = new System.Drawing.Size(504, 466);
             this.ptbVideo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.ptbVideo.TabIndex = 0;
             this.ptbVideo.TabStop = false;
+            this.ptbVideo.Click += new System.EventHandler(this.ptbVideo_Click);
             // 
             // timerPLC
             // 
@@ -480,7 +484,6 @@
             // 
             // pictureBox2
             // 
-            this.pictureBox2.Image = global::Conn_PLC.Properties.Resources.Pic_2023_05_12_185357_1;
             this.pictureBox2.Location = new System.Drawing.Point(6, 19);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(504, 466);
@@ -583,11 +586,31 @@
             this.pictureBox1.TabIndex = 7;
             this.pictureBox1.TabStop = false;
             // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(229, 274);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(41, 13);
+            this.label10.TabIndex = 4;
+            this.label10.Text = "label10";
+            // 
+            // button3
+            // 
+            this.button3.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.button3.Location = new System.Drawing.Point(285, 491);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(68, 31);
+            this.button3.TabIndex = 4;
+            this.button3.Text = "TEST";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(884, 461);
+            this.ClientSize = new System.Drawing.Size(1370, 749);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label2);
@@ -601,6 +624,7 @@
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
+            this.HelpButton = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.Text = "VISION";
@@ -611,6 +635,7 @@
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ptbCapture)).EndInit();
             this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ptbVideo)).EndInit();
             this.groupBox4.ResumeLayout(false);
             this.groupBox5.ResumeLayout(false);
@@ -673,6 +698,8 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
         private LCToolbox.LCTool.LCButton lcButton1;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Button button3;
     }
 }
 
