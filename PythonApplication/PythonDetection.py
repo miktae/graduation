@@ -1,30 +1,3 @@
-# YOLOv5 🚀 by Ultralytics, GPL-3.0 license
-"""
-Run inference on images, videos, directories, streams, etc.
-
-Usage - sources:
-
-python detect.py --weights runs/train/exp/weights/last.pt --data data/data.yaml --source 0              # webcam
-                                img.jpg        # image
-                                vid.mp4        # video                          
-                                path/         # directory                            
-                                path/*.jpg     # glob
-                                'https://youtu.be/Zgi9g1ksQHc'  # YouTube
-                                                             
-
-Usage - formats:
-    $ python path/to/detect.py --weights yolov5s.pt                 # PyTorch
-                                         yolov5s.torchscript        # TorchScript
-                                         yolov5s.onnx               # ONNX Runtime or OpenCV DNN with --dnn
-                                         yolov5s.xml                # OpenVINO
-                                         yolov5s.engine             # TensorRT
-                                         yolov5s.mlmodel            # CoreML (MacOS-only)
-                                         yolov5s_saved_model        # TensorFlow SavedModel
-                                         yolov5s.pb                 # TensorFlow GraphDef
-                                         yolov5s.tflite             # TensorFlow Lite
-                                         yolov5s_edgetpu.tflite     # TensorFlow Edge TPU
-"""
-
 from utils.torch_utils import select_device, time_sync
 from utils.plots import Annotator, colors, save_one_box
 from utils.general import (LOGGER, check_file, check_img_size, check_imshow, check_requirements, colorstr,

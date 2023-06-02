@@ -140,12 +140,12 @@ def measurement(imgPath):
 
 		if(radius * irate >= 23.7 and radius * irate <= 24.3):
 			print(imgPath + " OK")
-			return 1
+			return "OK"
 			with open(file_path, 'w') as file:
 				file.write(imgPath + " OK" + '\n')
 		else:
 			print(imgPath + " NG")
-			return 0
+			return "NG"
 			with open(file_path, 'w') as file:
 				file.write(imgPath + " NG" + '\n')
 
@@ -231,4 +231,5 @@ def measurement(imgPath):
 		cv2.circle(orig, (int(tlblX), int(tlblY)), 5, (255, 0, 0), -1)
 		cv2.circle(orig, (int(trbrX), int(trbrY)), 5, (255, 0, 0), -1)
 		cv2.imshow(cv2.resize(orig, dim, interpolation = cv2.INTER_AREA))
+		cv2.imwrite(imgPath.replace(".jpeg", "_measure_result.jpeg"), orig)
 		cv2.waitKey(0)
