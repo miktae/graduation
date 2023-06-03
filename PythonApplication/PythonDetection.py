@@ -14,13 +14,13 @@ import torch
 import torch.backends.cudnn as cudnn
 
 FILE = Path(__file__).resolve()
-ROOT = FILE.parents[0]  # YOLOv5 root directory
+ROOT = FILE.parents[0]  # root directory
 if str(ROOT) not in sys.path:
     sys.path.append(str(ROOT))  # add ROOT to PATH
 ROOT = Path(os.path.relpath(ROOT, Path.cwd()))  # relative
 
 @torch.no_grad()
-def run(weights=ROOT / 'yolov5s.pt',  # model.pt path(s)
+def run(weights=ROOT / 'best.pt',  # model.pt path(s)
         source=ROOT / 'data/images',  # file/dir/URL/glob, 0 for webcam
         data=ROOT / 'data/data.yaml',  # dataset.yaml path
         imgsz=(640, 640),  # inference size (height, width)
@@ -134,12 +134,12 @@ def run(weights=ROOT / 'yolov5s.pt',  # model.pt path(s)
                 for c in det[:, -1].unique():
                    n = (det[:, -1] == c).sum()  # detections per class
                    #s += f"{n} {names[int(c)]}{'s' * (n > 1)}, "  # add to string
-                   if(int(c) == 0):#TomatoBad
+                   if(int(c) == 0):
                      totalBad += n
-                     print(f"Bad Tomato{'es' * (n > 1)} : {totalBad} ")
+                     print(f"OK-1: {totalBad} ")
                    else:#TomatoGood
                      totalGood += n
-                     print(f"Good Tomato{'es' * (n > 1)} : {totalGood} ")
+                     print(f"OK-2: {totalGood} ")
 
                 # Write results
                 for *xyxy, conf, cls in reversed(det):

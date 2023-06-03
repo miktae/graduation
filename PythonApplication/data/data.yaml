@@ -7,3 +7,4 @@ test: images/test # test images (optional)
 # Classes
 nc: 6  # number of classes
 names: ['NG-1', 'NG-2','NG-3','NG-4','OK-1','OK-2']  # class names
+# NG1: chua dong nap, 2: dong nguoc nap, 3: lom, 4: xuoc

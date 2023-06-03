@@ -6,8 +6,6 @@ for line in sys.stdin:
     # Đọc dữ liệu từ STDIN
     imgPath = line.strip()
 
-    # Xử lý dữ liệu đo kích thước
-    measurement_result = PythonMeasurement.measurement(imgPath)
     # Phát hiện lỗi bề mặt 
     detection_result = PythonDetection.run(
                 weights='weight/best.pt',
@@ -15,8 +13,12 @@ for line in sys.stdin:
                 source=imgPath,
                 name = imgPath.replace('.jpeg', '_result.jpeg'),                                                                      
             )
-
+    
     # Gửi kết quả trả về cho file C#
-    print(measurement_result, detection_result)
+    if detection_result == "OK-1" or detection_result == "OK-2":
+        # Xử lý dữ liệu đo kích thước
+        measurement_result = PythonMeasurement.measurement(imgPath)
+        print(measurement_result, detection_result)
+    else:
+        print(detection_result)
     sys.stdout.flush()
-
